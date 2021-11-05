@@ -5,6 +5,7 @@ import Cookies from "js-cookie"
 import Nav from "./Nav";
 
 function Foodcourt(){
+    Cookies.remove("orders")
     const history = useHistory()
     const [items, setItems] = useState(
         [
