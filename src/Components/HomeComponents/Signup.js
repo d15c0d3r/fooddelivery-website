@@ -1,17 +1,19 @@
+import {useState} from "react"
+
 function Signup(){
     return(
         <div>
             <h2>New user? Signup Here!</h2>
             <form >
-                <label htmlFor = {"email"}>Email</label>
+                <label >Email</label>
                 <br/>
-                <input id = {"email"} />
+                <input id = {"email"} htmlFor = {"email"}/>
                 <br/>
-                <label htmlFor = {"password"}>Password</label>
+                <label >Password</label>
                 <br/>
                 <input id = {"password"} type = {"password"} />
                 <br/>
-                <label htmlFor = {"password"}>Confirm password</label>
+                <label >Confirm password</label>
                 <br/>
                 <input id = {"password"} type = {"password"} />
                 <br/>
