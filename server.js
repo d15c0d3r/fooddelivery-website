@@ -15,14 +15,15 @@ app.post("/login", async(req, res) => {
 });
 
 app.post("/signup",async(req,res)=>{
-
+    console.log(req.body)
+    return res.send("")
 })
 
 app.post("/forgotpass",async(req,res)=>{
 
 })
 
-app.post("/isLoggedIn",async(req,res)=>{
+app.get("/isLoggedIn",async(req,res)=>{
 
 })
 
