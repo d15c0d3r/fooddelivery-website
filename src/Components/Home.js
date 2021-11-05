@@ -1,6 +1,5 @@
 import Login from "./HomeComponents/Login";
 import Signup from "./HomeComponents/Signup";
-import ForgotPass from "./HomeComponents/ForgotPass";
 import Nav from "./Nav";
 import {useEffect} from "react"
 import Cookies from "js-cookie";
@@ -14,7 +13,6 @@ function Home(){
             <Nav/>
             <Login/>
             <Signup/>
-            <ForgotPass/>
         </div>
     );
 }
