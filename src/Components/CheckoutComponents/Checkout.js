@@ -1,6 +1,7 @@
 import Cookies from "js-cookie"
 import { useState ,useEffect} from "react"
-import Nav from "./Nav"
+import Nav from "../Nav"
+import Paymentoptions from "./Paymentoptions"
 
 function Checkout(props){
     const items = JSON.parse(Cookies.get("orders"))
@@ -26,7 +27,7 @@ function Checkout(props){
             <h>YOUR TOTAL : {total}</h>
             <br/>
             <br/>
-            {total!==0?(<button>Make Payment</button>):(<div></div>)}
+            {total!==0?(<Paymentoptions/>):(<div></div>)}
         </div>
 
     )

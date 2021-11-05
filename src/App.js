@@ -3,7 +3,7 @@ import Home from "./Components/Home";
 import Booking from "./Components/Booking";
 import Daffodills from "./Components/Daffodills";
 import Foodcourt from "./Components/Foodcourt";
-import Checkout from "./Components/Checkout"
+import Checkout from "./Components/CheckoutComponents/Checkout"
 import ForgotPass from "./Components/HomeComponents/ForgotPass";
 
 function App() {
