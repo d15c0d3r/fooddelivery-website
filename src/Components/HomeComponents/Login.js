@@ -18,7 +18,6 @@ function Login(){
                 if(res.data.token){
                     Cookies.set("token",data.token)
                     Cookies.set("email",data.email)
-                    history.push("/bookings")
                 }
             })
             .catch((err)=>{

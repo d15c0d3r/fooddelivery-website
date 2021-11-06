@@ -15,7 +15,7 @@ function App() {
       <Nav/>
       <Switch>
         <Route exact path = "/"><Home/></Route>
-        <ProtectedRoute exact path = "/bookings"><Booking/></ProtectedRoute>
+        <ProtectedRoute exact path = "/bookings" component = {Booking}></ProtectedRoute>
         <ProtectedRoute exact path = "/bookings/d2"><Daffodills/></ProtectedRoute>
         <ProtectedRoute exact path = "/bookings/food-court"><Foodcourt/></ProtectedRoute>
         <ProtectedRoute exact path = "/checkout"><Checkout/></ProtectedRoute>

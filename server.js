@@ -58,7 +58,14 @@ app.post("/forgotpass",async(req,res)=>{
     return res.send("password")
 })
 
-app.get("/is-authenticated",async(req,res)=>{
+app.post("/is-authenticated",async(req,res)=>{
+    console.log(req.body)
+    if(req.body.token){
+        jwt.verify(req.body.token, process.env.JWT_SECRET, (err, data) => {
+            console.log(data)
+        })
+        return res.send(true)
+    }
     return res.send(false)
 })
 

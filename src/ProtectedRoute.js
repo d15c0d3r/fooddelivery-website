@@ -1,38 +1,26 @@
-import { Route,Redirect } from "react-router"
-import Home from "./Components/Home"
+import { Route,Redirect, useHistory } from "react-router"
 import Cookies from "js-cookie"
 import axios from "axios"
-import {useState} from "react"
+import {useState,useEffect} from "react"
 
-function ProtectedRoute({component : Component}){
+function ProtectedRoute({component : Component, ...rest}){
     const [authenticated,setAuthenticated] = useState(false)
+    const history = useHistory()
 
-    function isAuthenticated(){
+    useEffect(()=>{
         const token = Cookies.get("token")
-        axios.post("http://localhost:4000/is-authenticated",{token})
-            .then(res=>{
-                console.log(res.data)
-                if(res.data){
-                    return true
-                } return false
-            })
-    }
+        if(token){
+            setAuthenticated(true)
+        }
+        else{
+            setAuthenticated(false)
+        }
+    })
     return(
-        <Route render = {
-            (props)=>{
-                if(isAuthenticated()){
-                    return(
-                        <Component/>
-                    )
-                }
-                return(
-                    <Redirect to = {
-                            {pathname : "/"}
-                        }
-                    />
-                )
-            }
-        }/>
+        <Route
+            {...rest}
+            render = {(props)=> Cookies.get("token")? <Component{...props}/> : <Redirect to = "/"/>}            
+        />
     )
 }
 
