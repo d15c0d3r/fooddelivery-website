@@ -9,10 +9,7 @@ function Signup(){
     const handleSubmit = (e)=>{
         if(pass1===pass2){
             e.preventDefault()
-            const user = {
-                email : email,
-                password : pass1
-            }
+            const user = {email, password}
             console.log(user)
             axios.post("http://localhost:4000/signup",user)
                 .then(res =>{

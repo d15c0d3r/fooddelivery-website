@@ -7,7 +7,7 @@ function Login(){
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        const user = {email : email , password : password}
+        const user = {email, password}
         axios.post("http://localhost:4000/login", user)
             .then(res =>{
                 console.log(res)
