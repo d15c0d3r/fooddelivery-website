@@ -1,15 +1,32 @@
+import {useState} from "react"
+import axios from "axios"
+
 function Login(){
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        const user = {email : email , password : password}
+        axios.post("http://localhost:4000/login", user)
+            .then(res =>{
+                console.log(res)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
     return(
         <div>
             <h2>Login here if you already have an account</h2>
-            <form >
-                <label htmlFor = {"text"}>RegNumber</label>
+            <form onSubmit = {(e)=> {handleSubmit(e)}}>
+                <label >Reg Email</label>
                 <br/>
-                <input id = {"email"} />
+                <input id = {"email"} type = "email" onChange = {(e)=>{setEmail(e.target.value)}}/>
                 <br/>
-                <label htmlFor = {"password"}>Password</label>
+                <label >Password</label>
                 <br/>
-                <input id = {"password"} type = {"password"} />
+                <input id = "password" type = "password" onChange = {(e)=>{setPassword(e.target.value)}}/>
                 <br/>
                 <button>Submit</button>
                 <br/>

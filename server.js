@@ -11,12 +11,13 @@ app.use(cors())
 app.use(express.json());
 
 app.post("/login", async(req, res) => {
-
+    console.log(req.body)
+    return res.send("logged in")
 });
 
 app.post("/signup",async(req,res)=>{
     console.log(req.body)
-    return res.send("")
+    return res.send("signed up")
 })
 
 app.post("/forgotpass",async(req,res)=>{
