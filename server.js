@@ -12,12 +12,45 @@ app.use(express.json());
 
 app.post("/login", async(req, res) => {
     console.log(req.body)
-    return res.send("logged in")
-});
+    db.query(`SELECT * FROM users WHERE email = ?`,[req.body.email],(err,result)=>{
+        if(err){
+            console.log(err)
+            return res.send("error")
+        }
+        const user = result[0]
+        console.log(user)
+        if(!user) return res.send("no user found")
+        bcrypt.compare(user.password,req.body.password,(err,passed)=>{
+            if(err){
+                console.log(err)
+                return res.send("error")
+            }
+            const token = jwt.sign({email : req.body.email},process.env.JWT_SECRET)
+            return res.send({token, email : req.body.email})
+        })
+    })
+})
 
 app.post("/signup",async(req,res)=>{
     console.log(req.body)
-    return res.send("signed up")
+    bcrypt.hash(req.body.password, 10, (err, hashedpass)=>{
+        if(err){
+            console.log(err)
+            return res.send("error")
+        }
+        const user = {
+            email : req.body.email,
+            password : hashedpass
+        }
+        db.query(`INSERT INTO users SET ? ;`, user, (err,result)=>{
+            if(err){
+                console.log(err)
+                return res.send("error")
+            }
+            console.log(result)
+            return res.send("signed up")
+            })
+        })
 })
 
 app.post("/forgotpass",async(req,res)=>{
