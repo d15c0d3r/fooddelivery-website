@@ -26,7 +26,8 @@ function ForgotPass(){
             />
             <br/>
             <br/>
-            <button onClick = {(e)=>{handleForgotPass(e)}}>Submit</button>
+            <button onClick = {(e)=>{handleForgotPass(e)}}
+            >Submit</button>
         </div>
     );
 }

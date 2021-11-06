@@ -9,7 +9,7 @@ function Signup(){
     const handleSubmit = (e)=>{
         if(pass1===pass2){
             e.preventDefault()
-            const user = {email, password}
+            const user = {email, pass1}
             console.log(user)
             axios.post("http://localhost:4000/signup",user)
                 .then(res =>{
@@ -51,7 +51,7 @@ function Signup(){
                     onChange = {(e)=>{setPass2(e.target.value)}}    
                 />
                 <br/>
-                {pass1===pass2? <div></div> : <div>Passwords didn't match</div>}
+                { pass1===pass2? <div></div> : <div>Passwords didn't match</div>}
                 <button>Submit</button>
             </form>
         </div>
