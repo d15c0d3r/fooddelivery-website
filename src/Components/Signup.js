@@ -1,6 +1,6 @@
 import {useState} from "react"
 import axios from "axios"
-import { useHistory } from "react-router";
+import { useHistory } from "react-router"
 
 function Signup(){
     const [email,setEmail] = useState("")
@@ -58,7 +58,7 @@ function Signup(){
                 <button>Submit</button>
             </form>
         </div>
-    );
+    )
 }
 
 export default Signup

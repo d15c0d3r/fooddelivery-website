@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Item from "./Item";
+import React, { useState } from 'react'
+import Item from "./Item"
 import {useHistory} from "react-router-dom"
 import Cookies from "js-cookie"
 
@@ -14,7 +14,7 @@ function Foodcourt(){
             {id : 4, name : "Veg Noodles",          price : 50,     ref : "/food/veg-noodles.jpg",          count : 0,  amount :0},
             {id : 5, name : "White Chicken",        price : 190,    ref : "/food/white-chicken-fried.jpg",  count : 0,  amount :0}
         ]
-    );
+    )
 
     function handleCheckOut(){
         const items_serialized = JSON.stringify(items)
@@ -38,7 +38,7 @@ function Foodcourt(){
                 }
                 newItems.push(item)
             }
-        });
+        })
         setItems(newItems)
     }
     return(

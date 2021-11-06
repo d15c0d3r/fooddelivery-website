@@ -1,9 +1,9 @@
-import Cookies from "js-cookie";
-import {useEffect} from "react";
+import Cookies from "js-cookie"
+import {useEffect} from "react"
 
 function Booking(){
     useEffect(()=>{
-        Cookies.remove("orders");
+        Cookies.remove("orders")
     })
     return(
         <div>

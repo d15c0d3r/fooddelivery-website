@@ -29,7 +29,7 @@ function ForgotPass(){
             <button onClick = {(e)=>{handleForgotPass(e)}}
             >Submit</button>
         </div>
-    );
+    )
 }
 
 export default ForgotPass
