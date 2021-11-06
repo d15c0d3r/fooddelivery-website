@@ -1,6 +1,5 @@
 import Cookies from "js-cookie"
 import { useState ,useEffect} from "react"
-import Nav from "../Nav"
 import Paymentoptions from "./Paymentoptions"
 
 function Checkout(){
@@ -19,7 +18,6 @@ function Checkout(){
 
     return(
         <div>
-            <Nav/>
             {items.map(item=>(
                 item.count>0 ? (<div  key = {item.id}>{item.name} X {item.count} = {item.amount}</div>):(<div  key = {item.id}></div>)
             ))}

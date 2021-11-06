@@ -6,10 +6,12 @@ import Foodcourt from "./Components/Foodcourt";
 import Checkout from "./Components/CheckoutComponents/Checkout"
 import ForgotPass from "./Components/HomeComponents/ForgotPass";
 import Signup from "./Components/Signup";
+import Nav from "./Components/Nav";
 
 function App() {
   return(
-    <BrowserRouter>
+    <div>
+      <Nav/>
       <Switch>
         <Route exact path = "/"><Home/></Route>
         <Route exact path = "/bookings"><Booking/></Route>
@@ -19,7 +21,7 @@ function App() {
         <Route exact path = "/forgot-password"><ForgotPass/></Route>
         <Route exact path = "/signup"><Signup/></Route>
       </Switch>
-    </BrowserRouter>
+    </div>
   );
 }
 

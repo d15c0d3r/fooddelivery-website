@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
 import {useEffect} from "react";
-import Nav from "./Nav";
 
 function Booking(){
     useEffect(()=>{
@@ -8,7 +7,6 @@ function Booking(){
     })
     return(
         <div>
-            <Nav/>
             <a href = "/bookings/d2">
                 <img src="/foodfrom/d2.png" alt = "" width="200" height="200"/>
                 <h1>Daffodils2</h1>

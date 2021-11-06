@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Item from "./Item";
 import {useHistory} from "react-router-dom"
 import Cookies from "js-cookie"
-import Nav from './Nav';
 
 function Daffodills(){
     Cookies.remove("orders")
@@ -44,7 +43,6 @@ function Daffodills(){
     }
     return(
         <div>
-            <Nav/>
             {items.map((item) => ( 
                 <div  key = {item.id}>
                     <Item 
