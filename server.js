@@ -58,9 +58,8 @@ app.post("/forgotpass",async(req,res)=>{
     return res.send("password")
 })
 
-app.get("/isLoggedIn",async(req,res)=>{
-    console.log(req.body)
-    return res.send(true)
+app.get("/is-authenticated",async(req,res)=>{
+    return res.send(false)
 })
 
 app.listen(4000, () => {
