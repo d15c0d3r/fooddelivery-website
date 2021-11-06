@@ -21,7 +21,8 @@ app.post("/signup",async(req,res)=>{
 })
 
 app.post("/forgotpass",async(req,res)=>{
-
+    console.log(req.body)
+    return res.send("password")
 })
 
 app.get("/isLoggedIn",async(req,res)=>{
