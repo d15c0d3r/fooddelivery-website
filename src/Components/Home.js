@@ -1,5 +1,4 @@
 import Login from "./HomeComponents/Login";
-import Signup from "./HomeComponents/Signup";
 import Nav from "./Nav";
 import {useEffect} from "react"
 import Cookies from "js-cookie";
@@ -12,7 +11,7 @@ function Home(){
         <div>
             <Nav/>
             <Login/>
-            <Signup/>
+            <h2>New user?</h2><a href = "http://localhost:3000/signup">Signup Here!</a>
         </div>
     );
 }

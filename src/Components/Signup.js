@@ -1,11 +1,12 @@
 import {useState} from "react"
 import axios from "axios"
+import { useHistory } from "react-router";
 
 function Signup(){
-    const [email,setEmail] = useState("");
-    const [pass1,setPass1] = useState("");
-    const [pass2,setPass2] = useState("");
-    const [status,setStatus] = useState(false);
+    const [email,setEmail] = useState("")
+    const [pass1,setPass1] = useState("")
+    const [pass2,setPass2] = useState("")
+    const history = useHistory()
 
     const handleSubmit = (e)=>{
         if(pass1===pass2){
@@ -15,7 +16,7 @@ function Signup(){
             axios.post("http://localhost:4000/signup",user)
                 .then(res =>{
                     console.log(res)
-                    res.data === "signed up"? setStatus(true) : setStatus(false)
+                    if(res.data!=="error") history.push("/")
                 })
                 .catch(err =>{
                     console.log(err)
@@ -24,7 +25,7 @@ function Signup(){
     }
     return(
         <div>
-            <h2>New user? Signup Here!</h2>
+            <h2>SIGNUP</h2>
             <form onSubmit = {(e)=>{handleSubmit(e)}}>
                 <label >Email</label>
                 <br/>
@@ -54,7 +55,6 @@ function Signup(){
                 />
                 <br/>
                 { pass1===pass2? <div></div> : <div>Passwords didn't match</div>}
-                {status? <div> Signup Successful, Login to Continue </div> : <div></div>}
                 <button>Submit</button>
             </form>
         </div>
