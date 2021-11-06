@@ -1,5 +1,4 @@
-import Cookies from "js-cookie";
-
+import Cookies from "js-cookie"
 
 function Nav(){
 

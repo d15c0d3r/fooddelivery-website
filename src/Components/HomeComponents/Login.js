@@ -31,11 +31,19 @@ function Login(){
             <form onSubmit = {(e)=> {handleSubmit(e)}}>
                 <label >Reg Email</label>
                 <br/>
-                <input id = {"email"} type = "email" onChange = {(e)=>{setEmail(e.target.value)}}/>
+                <input 
+                    id = {"email"} 
+                    type = "email" 
+                    required
+                    onChange = {(e)=>{setEmail(e.target.value)}}/>
                 <br/>
                 <label >Password</label>
                 <br/>
-                <input id = "password" type = "password" onChange = {(e)=>{setPassword(e.target.value)}}/>
+                <input 
+                    required
+                    id = "password" 
+                    type = "password" 
+                    onChange = {(e)=>{setPassword(e.target.value)}}/>
                 <br/>
                 <button>Submit</button>
                 <br/>
@@ -44,7 +52,7 @@ function Login(){
                 <br/>
             </form>
         </div>
-    );
+    )
 }
 
 export default Login

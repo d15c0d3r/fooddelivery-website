@@ -1,13 +1,13 @@
 import {Route , Switch} from "react-router-dom"
-import Home from "./Components/Home";
-import Booking from "./Components/Booking";
-import Daffodills from "./Components/Daffodills";
-import Foodcourt from "./Components/Foodcourt";
+import Home from "./Components/Home"
+import Booking from "./Components/Booking"
+import Daffodills from "./Components/Daffodills"
+import Foodcourt from "./Components/Foodcourt"
 import Checkout from "./Components/CheckoutComponents/Checkout"
-import ForgotPass from "./Components/HomeComponents/ForgotPass";
-import Signup from "./Components/Signup";
-import Nav from "./Components/Nav";
-import ProtectedRoute from "./ProtectedRoute";
+import ForgotPass from "./Components/HomeComponents/ForgotPass"
+import Signup from "./Components/Signup"
+import Nav from "./Components/Nav"
+import ProtectedRoute from "./ProtectedRoute"
 
 function App() {
   return(
@@ -23,7 +23,7 @@ function App() {
         <Route exact path = "/signup"><Signup/></Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

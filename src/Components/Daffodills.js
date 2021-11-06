@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Item from "./Item";
+import React, { useState } from 'react'
+import Item from "./Item"
 import {useHistory} from "react-router-dom"
 import Cookies from "js-cookie"
 
@@ -14,7 +14,7 @@ function Daffodills(){
             {id : 4, name : "Chicken Noodles",      price : 80,     ref : "/food/chicken-noodles.jpg",    count : 0,  amount :0},
             {id : 5, name : "Egg Noodles",          price : 70,     ref : "/food/egg-noodles.jpg",        count : 0,  amount :0}
         ]
-    );
+    )
 
     function handleCheckOut(){
         const items_serialized = JSON.stringify(items)
@@ -38,7 +38,7 @@ function Daffodills(){
                 }
                 newItems.push(item)
             }
-        });
+        })
         setItems(newItems)
     }
     return(
