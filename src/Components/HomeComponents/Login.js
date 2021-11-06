@@ -1,5 +1,6 @@
 import {useState} from "react"
 import axios from "axios"
+import Cookies from "js-cookie";
 
 function Login(){
     const [email,setEmail] = useState("");
@@ -10,7 +11,11 @@ function Login(){
         const user = {email, password}
         axios.post("http://localhost:4000/login", user)
             .then(res =>{
-                console.log(res)
+                const data = res.data
+                console.log(data)
+                if(data.token){
+                    Cookies.set("token",data.token)
+                }
             })
             .catch((err)=>{
                 console.log(err)

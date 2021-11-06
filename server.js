@@ -26,7 +26,8 @@ app.post("/forgotpass",async(req,res)=>{
 })
 
 app.get("/isLoggedIn",async(req,res)=>{
-
+    console.log(req.body)
+    return res.send(true)
 })
 
 app.listen(4000, () => {

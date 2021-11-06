@@ -3,7 +3,7 @@ import { useState ,useEffect} from "react"
 import Nav from "../Nav"
 import Paymentoptions from "./Paymentoptions"
 
-function Checkout(props){
+function Checkout(){
     const items = JSON.parse(Cookies.get("orders"))
     const [total,setTotal] = useState(0)
 

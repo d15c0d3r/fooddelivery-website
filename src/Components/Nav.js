@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
 function Nav(){
-    function handleLogout(){
+    function handleLogout(e){
         Cookies.remove("orders")
         Cookies.remove("token")
     }
@@ -11,7 +11,7 @@ function Nav(){
             <br/>
             <a href="http://localhost:3000/bookings">Bookings</a>
             <br/>
-            <a href="http://localhost:3000/" onClick = {()=>handleLogout()}>Logout</a>
+            <a href="http://localhost:3000/" onClick = {(e)=>handleLogout(e)}>Logout</a>
             <br/>
             <br/>
         </div>
