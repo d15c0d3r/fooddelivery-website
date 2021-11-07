@@ -18,6 +18,7 @@ function Login(){
                 if(res.data.token){
                     Cookies.set("token",data.token)
                     Cookies.set("email",data.email)
+                    window.location.reload()
                 }
             })
             .catch((err)=>{

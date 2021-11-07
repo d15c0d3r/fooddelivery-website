@@ -15,10 +15,9 @@ function App() {
       <Nav/>
       <Switch>
         <Route exact path = "/"><Home/></Route>
-        <ProtectedRoute exact path = "/bookings" component = {Booking}></ProtectedRoute>
-        <ProtectedRoute exact path = "/bookings/d2"><Daffodills/></ProtectedRoute>
-        <ProtectedRoute exact path = "/bookings/food-court"><Foodcourt/></ProtectedRoute>
-        <ProtectedRoute exact path = "/checkout"><Checkout/></ProtectedRoute>
+        <ProtectedRoute exact path = "/bookings/d2" component = {Daffodills}></ProtectedRoute>
+        <ProtectedRoute exact path = "/bookings/food-court" component = {Foodcourt}></ProtectedRoute>
+        <ProtectedRoute exact path = "/checkout" component = {Checkout}></ProtectedRoute>
         <Route exact path = "/forgot-password"><ForgotPass/></Route>
         <Route exact path = "/signup"><Signup/></Route>
       </Switch>

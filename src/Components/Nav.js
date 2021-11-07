@@ -9,12 +9,10 @@ function Nav(){
     }
     return (
         <div>
-            
+            {Cookies.get("email")?<h2>Hi {Cookies.get("email")}</h2> : <div></div>}
             <a href="http://localhost:3000/">Home</a>
             <br/>
-            <a href="http://localhost:3000/bookings">Bookings</a>
-            <br/>
-            {(Cookies.get("token"))? (<a href="http://localhost:3000/" onClick = {(e)=>handleLogout(e)}>Logout</a>) : (<div></div>)}
+            {(Cookies.get("token"))? (<a href="http://localhost:3000/" onClick = {(e)=>handleLogout(e)}>Logout</a>) : (<br/>)}
             <br/>
             <br/>
         </div>

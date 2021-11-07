@@ -5,7 +5,7 @@ function Booking(){
     useEffect(()=>{
         Cookies.remove("orders")
     })
-    return(
+    return( 
         <div>
             <a href = "/bookings/d2">
                 <img src="/foodfrom/d2.png" alt = "" width="200" height="200"/>
