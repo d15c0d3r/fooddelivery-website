@@ -11,9 +11,8 @@ function Nav(){
         <div>
             {Cookies.get("email")?<h2>Hi {Cookies.get("email")}</h2> : <div></div>}
             <a href="http://localhost:3000/">Home</a>
-            <br/>
-            {(Cookies.get("token"))? (<a href="http://localhost:3000/" onClick = {(e)=>handleLogout(e)}>Logout</a>) : (<br/>)}
-            <br/>
+            
+            {(Cookies.get("token"))? (<div><a href="http://localhost:3000/" onClick = {(e)=>handleLogout(e)}>Logout</a></div>) : (<br/>)}
             <br/>
         </div>
     )

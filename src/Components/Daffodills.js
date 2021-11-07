@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Item from "./Item"
 import {useHistory} from "react-router-dom"
 import Cookies from "js-cookie"
+import ClearOrders from './ClearOrders'
 
 function Daffodills(){
     Cookies.remove("orders")
@@ -15,6 +16,23 @@ function Daffodills(){
             {id : 5, name : "Egg Noodles",          price : 70,     ref : "/food/egg-noodles.jpg",        count : 0,  amount :0}
         ]
     )
+    
+    function clearItems(){
+        const freshItems = []
+        items.forEach(item => {
+            freshItems.push(
+                {
+                    id : item.id,
+                    name : item.name,
+                    price : item.price,
+                    ref : item.ref,
+                    count : 0,
+                    amount : item.count
+                }
+            )
+        });
+        setItems(freshItems)
+    }
 
     function handleCheckOut(){
         const items_serialized = JSON.stringify(items)
@@ -52,6 +70,7 @@ function Daffodills(){
                 </div>
             ))}
             <button onClick = {handleCheckOut}>CHECK OUT</button>
+            <ClearOrders items = {items} clearItems = {()=>clearItems()}/>
         </div>
     )
 }

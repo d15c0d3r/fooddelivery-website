@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Item from "./Item"
 import {useHistory} from "react-router-dom"
 import Cookies from "js-cookie"
+import ClearOrders from './ClearOrders'
 
 function Foodcourt(){
     Cookies.remove("orders")
@@ -15,6 +16,23 @@ function Foodcourt(){
             {id : 5, name : "White Chicken",        price : 190,    ref : "/food/white-chicken-fried.jpg",  count : 0,  amount :0}
         ]
     )
+
+    function clearItems(){
+        const freshItems = []
+        items.forEach(item => {
+            freshItems.push(
+                {
+                    id : item.id,
+                    name : item.name,
+                    price : item.price,
+                    ref : item.ref,
+                    count : 0,
+                    amount : item.count
+                }
+            )
+        });
+        setItems(freshItems)
+    }
 
     function handleCheckOut(){
         const items_serialized = JSON.stringify(items)
@@ -53,7 +71,7 @@ function Foodcourt(){
             ))}
             <button onClick = {handleCheckOut}>CHECK OUT</button>
             <br/>
-            <button >CLEAR ORDERS</button>
+            <ClearOrders items = {items} clearItems = {()=>clearItems()}/>
         </div>
     )
 }
