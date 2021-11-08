@@ -11,7 +11,7 @@ import {useState,useEffect} from "react"
 
 function App() {
   const [loggedIn,setLoggedIn]= useState(false)
-
+  
   useEffect(() => {
     CheckLoggedIn(setLoggedIn)
   }, [loggedIn])

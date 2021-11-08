@@ -7,17 +7,20 @@ function Signup(props){
     const [pass2,setPass2] = useState("")
 
     const handleSubmit = (e)=>{
+        e.preventDefault()
+        props.handleLoginStatus(false)
         if(pass1===pass2){
-            e.preventDefault()
             const user = {email, password : pass1}
             axios.post("http://localhost:4000/signup",user)
                 .then(res =>{
                     console.log(res)
-                    props.handleStatus(res.data)
+                    props.handleSigninStatus(res.data)
                 })
                 .catch(err =>{
-                    props.handleStatus(false)
+                    props.handleSigninStatus(false)
                 })
+        }else{
+            props.handleSigninStatus("unmatchedpasswords")
         }
     }
     return(

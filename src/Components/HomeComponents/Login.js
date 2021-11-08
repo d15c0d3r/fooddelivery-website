@@ -1,22 +1,27 @@
 import {useState} from "react"
 import axios from "axios"
 import Cookies from "js-cookie"
+import {useHistory} from "react-router-dom"
 
-function Login(){
+function Login(props){
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
+    const history = useHistory()
+
     const handleSubmit = (e)=>{
         e.preventDefault()
+        props.handleSigninStatus(false)
         const user = {email, password}
         axios.post("http://localhost:4000/login", user)
             .then(res =>{
                 const data = res.data
-                console.log(data)
                 if(res.data.token){
                     Cookies.set("token",data.token)
                     Cookies.set("email",data.email)
-                    window.location.reload()
+                    history.push("/")
+                }else{
+                    props.handleLoginStatus(data)
                 }
             })
             .catch((err)=>{
