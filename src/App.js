@@ -1,5 +1,5 @@
 import {Route , Switch} from "react-router-dom"
-import Home from "./Components/Home"
+import Home from "../src/Components/HomeComponents/Home"
 import Daffodills from "./Components/Daffodills"
 import Foodcourt from "./Components/Foodcourt"
 import Checkout from "./Components/CheckoutComponents/Checkout"

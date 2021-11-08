@@ -1,11 +1,12 @@
-import Login from "./HomeComponents/Login"
+import Login from "./Login"
 import {useEffect, useState} from "react"
 import Cookies from "js-cookie"
-import Booking from "./HomeComponents/Booking"
-import Signup from "./HomeComponents/Signup"
+import Booking from "./Booking"
+import Signup from "./Signup"
+import { SignedStatus } from "./SignedStatus"
 
 function Home(props){
-    const [signed, setSigned] = useState(false)
+    const [status, setStatus] = useState(false)
 
     useEffect(()=>{
         Cookies.remove("orders")
@@ -16,7 +17,8 @@ function Home(props){
             {!props.loggedIn?<div>
                         <Login/>
                         <br/>
-                        {!signed?<Signup handleSigned = {(val)=>setSigned(val)}/>:<div>Login to continue</div>}
+                        {status!=="signedup"?<Signup handleStatus = {(val)=>setStatus(val)}/>:<div>Login to continue</div>}
+                        <SignedStatus status = {status}/>
                     </div>
                     :<Booking/>}
         </div>

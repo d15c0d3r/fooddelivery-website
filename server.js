@@ -32,10 +32,8 @@ app.post("/login", async(req, res) => {
 })
 
 app.post("/signup", async(req,res)=>{
-    console.log(req.body)
     bcrypt.hash(req.body.password, 10, (err, hashedpass)=>{
         if(err){
-            console.log(err)
             return res.send("error")
         }
         const user = {
@@ -44,11 +42,10 @@ app.post("/signup", async(req,res)=>{
         }
         db.query(`INSERT INTO users SET ? ;`, user, (err,result)=>{
             if(err){
-                console.log(err)
+                if(err.code === "ER_DUP_ENTRY") return res.send("userexists")
                 return res.send("error")
             }
-            console.log(result)
-            return res.send("signed up")
+            return res.send("signedup")
             })
         })
 })

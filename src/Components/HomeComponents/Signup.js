@@ -13,11 +13,10 @@ function Signup(props){
             axios.post("http://localhost:4000/signup",user)
                 .then(res =>{
                     console.log(res)
-                    if(res.data === "signed up") props.handleSigned(true)
-                    else props.handleSigned(false)
+                    props.handleStatus(res.data)
                 })
                 .catch(err =>{
-                    props.handleSigned(false)
+                    props.handleStatus(false)
                 })
         }
     }
