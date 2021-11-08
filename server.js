@@ -11,22 +11,20 @@ app.use(cors())
 app.use(express.json())
 
 app.post("/login", async(req, res) => {
-    console.log(req.body)
     db.query(`SELECT * FROM users WHERE email = ?`,[req.body.email],(err,result)=>{
         if(err){
-            console.log(err)
             return res.send("error")
         }
         const user = result[0]
-        console.log(user)
-        if(!user) return res.send("no user found")
+        if(!user) return res.send("nouserfound")
+        console.log(user.password)
+        
         bcrypt.compare(user.password,req.body.password,(err,passed)=>{
-            if(err){
-                console.log(err)
-                return res.send("error")
-            }
-            const token = jwt.sign({email : req.body.email},process.env.JWT_SECRET)
-            return res.send({token, email : req.body.email})
+            if(err) return res.send("error")
+            if(passed){
+                const token = jwt.sign({email : req.body.email},process.env.JWT_SECRET)
+                return res.send({token, email : req.body.email})
+            } else return res.send("wrongpassword")
         })
     })
 })
@@ -51,15 +49,13 @@ app.post("/signup", async(req,res)=>{
 })
 
 app.post("/forgotpass", async(req,res)=>{
-    console.log(req.body)
     return res.send("password")
 })
 
 app.get("/isLoggedIn", async(req,res)=>{
-    console.log(req.query)
     if(req.query.token){
         jwt.verify(req.query.token, process.env.JWT_SECRET, (err, data) => {
-            console.log(data)
+            // console.log(data)
         })
         return res.send(true)
     }
