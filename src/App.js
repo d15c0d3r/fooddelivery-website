@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute"
 import PageNotFound from "./Components/PageNotFound"
 
 function App() {
+  
   return(
     <div>
       <Nav/>
