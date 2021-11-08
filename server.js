@@ -31,7 +31,7 @@ app.post("/login", async(req, res) => {
     })
 })
 
-app.post("/signup",async(req,res)=>{
+app.post("/signup", async(req,res)=>{
     console.log(req.body)
     bcrypt.hash(req.body.password, 10, (err, hashedpass)=>{
         if(err){
@@ -53,15 +53,15 @@ app.post("/signup",async(req,res)=>{
         })
 })
 
-app.post("/forgotpass",async(req,res)=>{
+app.post("/forgotpass", async(req,res)=>{
     console.log(req.body)
     return res.send("password")
 })
 
-app.post("/is-authenticated",async(req,res)=>{
-    console.log(req.body)
-    if(req.body.token){
-        jwt.verify(req.body.token, process.env.JWT_SECRET, (err, data) => {
+app.get("/isLoggedIn", async(req,res)=>{
+    console.log(req.query)
+    if(req.query.token){
+        jwt.verify(req.query.token, process.env.JWT_SECRET, (err, data) => {
             console.log(data)
         })
         return res.send(true)
