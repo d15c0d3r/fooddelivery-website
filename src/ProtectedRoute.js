@@ -1,12 +1,14 @@
-import { Route,Redirect, useHistory } from "react-router"
-import Cookies from "js-cookie"
+import { Route, Redirect} from "react-router"
 
-
-function ProtectedRoute({component : Component, ...rest}){
+function ProtectedRoute({loggedIn, component : Component, ...rest}){
     return(
         <Route
             {...rest} 
-            render = {(props)=> Cookies.get("token")? <Component{...props}/> : <Redirect to = "/"/>}              
+            render = {(props)=>{
+                if(loggedIn) return <Component {...props}/>
+                return <Redirect to = {{path : "/"}}/>
+                }    
+            }              
         />
     )
 }

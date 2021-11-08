@@ -5,19 +5,25 @@ import Foodcourt from "./Components/Foodcourt"
 import Checkout from "./Components/CheckoutComponents/Checkout"
 import ForgotPass from "./Components/HomeComponents/ForgotPass"
 import Nav from "./Components/Nav"
-import ProtectedRoute from "./ProtectedRoute"
 import PageNotFound from "./Components/PageNotFound"
+import CheckLoggedIn from "./Apis/CheckLoggedIn"
+import {useState,useEffect} from "react"
 
 function App() {
-  
+  const [loggedIn,setLoggedIn]= useState(false)
+
+  useEffect(() => {
+    CheckLoggedIn(setLoggedIn)
+  }, [loggedIn])
+
   return(
     <div>
-      <Nav/>
+      <Nav loggedIn = {loggedIn} handleLoggedIn = {(val)=>setLoggedIn(val)}/>
       <Switch>
-        <Route exact path = "/"><Home/></Route>
-        <ProtectedRoute exact path = "/bookings/d2" component = {Daffodills}></ProtectedRoute>
-        <ProtectedRoute exact path = "/bookings/food-court" component = {Foodcourt}></ProtectedRoute>
-        <ProtectedRoute exact path = "/checkout" component = {Checkout}></ProtectedRoute>
+        <Route exact path = "/"><Home loggedIn = {loggedIn} handleLoggedIn = {setLoggedIn}/></Route>
+        {loggedIn?<Route exact path = "/bookings/d2"><Daffodills/></Route> : null}
+        {loggedIn?<Route exact path = "/bookings/food-court"><Foodcourt/></Route> : null}
+        {loggedIn?<Route exact path = "/checkout"><Checkout/></Route> : null}
         <Route exact path = "/forgot-password"><ForgotPass/></Route>
         <Route><PageNotFound/></Route>
       </Switch>
