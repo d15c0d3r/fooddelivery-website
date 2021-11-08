@@ -1,12 +1,10 @@
 import {useState} from "react"
 import axios from "axios"
 import Cookies from "js-cookie"
-import { useHistory } from "react-router"
 
 function Login(){
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const history = useHistory()
 
     const handleSubmit = (e)=>{
         e.preventDefault()
