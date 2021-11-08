@@ -27,7 +27,7 @@ function Login(){
     }
     return(
         <div>
-            <h2>Login here if you already have an account</h2>
+            <h2>LOGIN</h2>
             <form onSubmit = {(e)=> {handleSubmit(e)}}>
                 <label >Reg Email</label>
                 <br/>

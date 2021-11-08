@@ -1,23 +1,26 @@
 import Login from "./HomeComponents/Login"
 import {useEffect, useState} from "react"
 import Cookies from "js-cookie"
-import Booking from "./Booking"
+import Booking from "./HomeComponents/Booking"
+import Signup from "./HomeComponents/Signup"
+import CheckLoggedIn from "../Apis/CheckLoggedIn"
 
 function Home(){
-    const [display,setDisplay] = useState(true)
+    const [logged,setLogged] = useState(false)
+    const [signed, setSigned] = useState(false)
+
     useEffect(()=>{
         Cookies.remove("orders")
-        if(Cookies.get("email") && Cookies.get("token")){
-            setDisplay(false)
-        }else{
-            setDisplay(true)
-        }
-    })
+        CheckLoggedIn(setLogged)
+    },[])
     return(
         <div>
-            {display?<Login/>:<div></div>}
-            {!display?<Booking/>:<div></div>}
-            {display?<div><h2>New user?</h2><a href = "http://localhost:3000/signup">Signup Here!</a></div> : <div></div>}
+            {!logged?<div>
+                        <Login/>
+                        <br/>
+                        {!signed?<Signup handleSigned = {(val)=>setSigned(val)}/>:<div>Login to continue</div>}
+                    </div>
+                    :<Booking/>}
         </div>
     )
 }
