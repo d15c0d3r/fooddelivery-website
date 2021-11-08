@@ -11,6 +11,8 @@ function Home(props){
     const [loginStatus, setLoginStatus] = useState(false)
 
     useEffect(()=>{
+        setSigninStatus(false)
+        setLoginStatus(false)
         Cookies.remove("orders")
     },[])
     
@@ -18,7 +20,7 @@ function Home(props){
         <div>
             {!props.loggedIn ?
                     <div>
-                        <Login handleLoginStatus = {(val)=>setLoginStatus(val)} handleSigninStatus = {setSigninStatus}/>
+                        <Login handleLoggedIn = {props.handleLoggedIn} handleLoginStatus = {(val)=>setLoginStatus(val)} handleSigninStatus = {setSigninStatus}/>
                         <LoginStatus status = {loginStatus}/>
                         <br/>
                         <Signup handleSigninStatus = {(val)=>setSigninStatus(val)} handleLoginStatus = {setLoginStatus}/>

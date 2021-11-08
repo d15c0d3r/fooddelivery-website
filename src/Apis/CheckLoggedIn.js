@@ -8,6 +8,7 @@ export default function CheckLoggedIn(setter){
             email : Cookies.get("email")
         }})
         .then(res=>{
+            console.log(res.data)
             if(res.data === true){
                 setter(true)
             }else{

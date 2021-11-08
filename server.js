@@ -11,16 +11,16 @@ app.use(cors())
 app.use(express.json())
 
 app.post("/login", async(req, res) => {
-    db.query(`SELECT * FROM users WHERE email = ?`,[req.body.email],(err,result)=>{
+    db.query(`SELECT * FROM users WHERE email = ? ;`,[req.body.email],(err,result)=>{
         if(err){
             return res.send("error")
         }
         const user = result[0]
         if(!user) return res.send("nouserfound")
-        console.log(user.password)
-        
-        bcrypt.compare(user.password,req.body.password,(err,passed)=>{
+        // console.log(user.password)
+        bcrypt.compare(req.body.password,user.password,(err,passed)=>{
             if(err) return res.send("error")
+            // console.log(passed)
             if(passed){
                 const token = jwt.sign({email : req.body.email},process.env.JWT_SECRET)
                 return res.send({token, email : req.body.email})
@@ -55,11 +55,13 @@ app.post("/forgotpass", async(req,res)=>{
 app.get("/isLoggedIn", async(req,res)=>{
     if(req.query.token){
         jwt.verify(req.query.token, process.env.JWT_SECRET, (err, data) => {
-            // console.log(data)
+            const email = data.email
+            db.query(`SELECT * FROM users WHERE email = ? ;`,[email],(err,result)=>{
+                if(err) return res.send(false)
+                if(result) return res.send(true)
+            })
         })
-        return res.send(true)
-    }
-    return res.send(false)
+    }else return res.send(false)
 })
 
 app.listen(4000, () => {

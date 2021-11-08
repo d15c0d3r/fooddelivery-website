@@ -16,10 +16,12 @@ function Login(props){
         axios.post("http://localhost:4000/login", user)
             .then(res =>{
                 const data = res.data
+                console.log(data)
                 if(res.data.token){
                     Cookies.set("token",data.token)
                     Cookies.set("email",data.email)
-                    history.push("/")
+                    props.handleLoggedIn(true)
+                    props.handleLoginStatus(true)
                 }else{
                     props.handleLoginStatus(data)
                 }
